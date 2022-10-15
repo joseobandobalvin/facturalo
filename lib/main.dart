@@ -8,7 +8,7 @@ import 'generated/l10n.dart';
 
 import 'bindings/initial_bindings.dart';
 
-//prueba de syncroooo
+//prueba de syncrooooiiii
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   InitialBindings().dependencies();
