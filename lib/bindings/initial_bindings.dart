@@ -3,6 +3,8 @@ import 'package:facturalo/models/user.dart';
 
 import 'package:get/get.dart';
 
+//another
+
 class InitialBindings implements Bindings {
   @override
   void dependencies() {
