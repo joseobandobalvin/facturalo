@@ -1,27 +1,45 @@
 import 'dart:convert';
 
+import 'package:facturalo/helpers/http.dart';
+import 'package:facturalo/helpers/http_method.dart';
 import 'package:facturalo/models/user.dart';
 import 'package:facturalo/providers/local/auth_client.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AuthProvider {
-  AuthClient _authClient = AuthClient();
+  final Http _http = Http();
+  final AuthClient _authClient = AuthClient();
 
   Future<String?> signInWithEmailAndPassword(
       String email, String password) async {
     try {
-      var url = Uri.https('full.facturalo.pro', 'api/login');
-      var response =
-          await http.post(url, body: {'email': email, 'password': password});
+      final response = await _http.request(
+        '/api/login',
+        method: HttpMethod.post,
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+      // print("result data");
+      // print(result.statusCode);
+      // print(result.error);
+      // print(result.data);
+
+      // if (result.error == null) {}
+
+      // var url = Uri.https('full.facturalo.pro', 'api/login');
+      // var response =
+      //     await http.post(url, body: {'email': email, 'password': password});
       if (response.statusCode == 200) {
-        var data = jsonDecode(response.body.toString());
+        //var data = jsonDecode(response.data.toString());
 
         //print(data['token']);
-        if (data['success']) {
-          _authClient.saveUserInformacion(data);
+        if (response.data['success']) {
+          _authClient.saveUserInformacion(response.data);
 
-          return data['token'];
+          return response.data['token'];
         } else {
           return null;
         }

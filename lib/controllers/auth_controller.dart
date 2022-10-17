@@ -10,7 +10,7 @@ class AuthController extends GetxController {
   String _email = "", _password = "";
 
   final AuthRepoImp _authRepoImp = AuthRepoImp();
-  final AccountRepoImp _accountRepoImp = AccountRepoImp();
+  //final AccountRepoImp _accountRepoImp = AccountRepoImp();
 
   @override
   void onReady() {
@@ -29,6 +29,7 @@ class AuthController extends GetxController {
     String? token =
         await _authRepoImp.signInWithEmailAndPassword(_email, _password);
 
+    //AuthRepo wes = AuthRepoImp().signInWithEmailAndPassword(_email, _password);
     if (token != null) {
       await _authRepoImp.saveToken(token);
       return true;

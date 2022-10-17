@@ -6,8 +6,6 @@ class AuthRepoImp implements AuthRepo {
   final AuthProvider _authProvider = AuthProvider();
   final AuthClient _authClient = AuthClient();
 
-  //AuthRepoImp(this._authProvider, this._authClient);
-
   @override
   Future<String?> signInWithEmailAndPassword(String email, String password) {
     return _authProvider.signInWithEmailAndPassword(email, password);

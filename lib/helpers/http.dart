@@ -1,7 +1,5 @@
-import 'package:facturalo/helpers/http_result.dart';
-
+import 'http_result.dart';
 import 'parse_response_body.dart';
-
 import 'http_method.dart';
 import 'send_request.dart';
 
@@ -10,13 +8,13 @@ typedef Parser<T> = T Function(dynamic data);
 class Http {
   final String baseUrl;
 
-  Http({this.baseUrl = ""});
+  Http({this.baseUrl = "https://full.facturalo.pro"});
 
   Future<HttpResult<T>> request<T>(
     String path, {
     HttpMethod method = HttpMethod.get,
     Map<String, String> headers = const {},
-    Map<String, dynamic> queryParameters = const {},
+    Map<String, String> queryParameters = const {},
     dynamic body,
     Parser<T>? parser,
     Duration timeOut = const Duration(seconds: 10),
