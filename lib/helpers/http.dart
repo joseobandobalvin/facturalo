@@ -71,7 +71,7 @@ class Http {
       }
       return HttpResult<T>(
         data: null,
-        statusCode: -1,
+        statusCode: statusCode ?? -1,
         error: HttpError(
           data: data,
           exception: e,
