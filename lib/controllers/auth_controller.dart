@@ -37,6 +37,10 @@ class AuthController extends GetxController {
     return false;
   }
 
+  void getPreferences() {
+    print("traendo preferencias");
+  }
+
   void signOut() {
     print("saliendo");
     try {

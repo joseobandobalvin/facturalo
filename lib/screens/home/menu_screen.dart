@@ -1,11 +1,17 @@
 import 'package:facturalo/configs/themes/app_colors.dart';
 import 'package:facturalo/configs/themes/ui_parameters.dart';
+import 'package:facturalo/controllers/auth_controller.dart';
 import 'package:facturalo/controllers/zoom_drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MenuScreen extends GetView<MyZoomDrawerController> {
-  const MenuScreen({super.key});
+  MenuScreen({super.key});
+  AuthController _authC = new AuthController();
+
+  isLogged() {
+    _authC.getPreferences();
+  }
 
   @override
   Widget build(BuildContext context) {

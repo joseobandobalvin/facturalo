@@ -36,7 +36,6 @@ class LoginForm extends GetView<AuthController> {
       );
     } else {
       // go to home
-
       controller.navigateToHomePage();
     }
   }
