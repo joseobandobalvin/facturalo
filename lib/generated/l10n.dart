@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `https://full.facturalo.pro`
+  String get baseUrl {
+    return Intl.message(
+      'https://full.facturalo.pro',
+      name: 'baseUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign in`
   String get ingresar {
     return Intl.message(

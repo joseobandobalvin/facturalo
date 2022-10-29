@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "baseUrl":
+            MessageLookupByLibrary.simpleMessage("https://full.facturalo.pro"),
         "ingresar": MessageLookupByLibrary.simpleMessage("Ingresar"),
         "pageHomeWelcome": m0,
         "pageHomeWelcomeGender": m1,

@@ -1,4 +1,5 @@
 {
+    "baseUrl":"https://full.facturalo.pro",
     "ingresar": "Sign in",
     "pageHomeWelcome": "Welcome {name}",
     "pageHomeWelcomeGender": "{gender, select, male {Hi man!} female {Hi woman!} other {Hi there!}}",
