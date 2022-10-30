@@ -1,4 +1,5 @@
 import 'package:facturalo/controllers/auth_controller.dart';
+import 'package:facturalo/providers/local/auth_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
@@ -7,9 +8,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MyZoomDrawerController extends GetxController {
   final zoomDrawerController = ZoomDrawerController();
+  final AuthClient _authClient = AuthClient();
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
   }
 

@@ -1,4 +1,5 @@
 import 'package:facturalo/models/user.dart';
+import 'package:facturalo/providers/local/auth_client.dart';
 import 'package:facturalo/repo/account_repo.dart';
 import 'package:facturalo/repo/auth_repo.dart';
 import 'package:facturalo/repo_imp/account_repo_imp.dart';
@@ -10,6 +11,7 @@ class AuthController extends GetxController {
   String _email = "", _password = "";
 
   final AuthRepoImp _authRepoImp = AuthRepoImp();
+  final AuthClient _authClient = AuthClient();
   //final AccountRepoImp _accountRepoImp = AccountRepoImp();
 
   @override
@@ -37,14 +39,15 @@ class AuthController extends GetxController {
     return false;
   }
 
-  void getPreferences() {
-    print("traendo preferencias");
+  Future getPreferences() async {
+    //String? toke = await _authRepoImp.getToken("token");
+    String? t = await _authClient.token;
   }
 
   void signOut() {
     print("saliendo");
     try {
-      print("Saliendo del try ");
+      _authClient.signOut();
       navigateToLoginPage();
     } catch (e) {
       print(e);

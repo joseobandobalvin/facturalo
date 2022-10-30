@@ -19,7 +19,7 @@ class AuthClient {
 
   Future<String?> get token async {
     final SharedPreferences preferences = await _preferences;
-    return preferences.getString(_key);
+    return preferences.getString(_key).toString();
   }
 
   Future<void> saveUserInformacion(Map<String, dynamic> data) async {
@@ -38,9 +38,9 @@ class AuthClient {
     }
 
     return User(
-      name: preferences.getString("name"),
-      email: preferences.getString("email"),
-      ruc: preferences.getString("ruc"),
+      name: preferences.getString("name").toString(),
+      email: preferences.getString("email").toString(),
+      ruc: preferences.getString("ruc").toString(),
     );
   }
 }

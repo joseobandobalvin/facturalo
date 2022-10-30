@@ -2,15 +2,19 @@ import 'package:facturalo/configs/themes/app_colors.dart';
 import 'package:facturalo/configs/themes/ui_parameters.dart';
 import 'package:facturalo/controllers/auth_controller.dart';
 import 'package:facturalo/controllers/zoom_drawer_controller.dart';
+import 'package:facturalo/providers/local/auth_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MenuScreen extends GetView<MyZoomDrawerController> {
   MenuScreen({super.key});
-  AuthController _authC = new AuthController();
+  final AuthClient _authClient = AuthClient();
 
-  isLogged() {
-    _authC.getPreferences();
+  isLogged() async {
+    String? token = await _authClient.token;
+    //await _authClient.signOut();
+    print(token);
+    return token;
   }
 
   @override
@@ -45,9 +49,7 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
                 child: Column(
                   children: [
                     const Text("hi there"),
-                    const Spacer(
-                      flex: 1,
-                    ),
+                    const Spacer(flex: 1),
                     _DrawerButton(
                       icon: Icons.web,
                       label: "Website",
@@ -56,7 +58,7 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
                     _DrawerButton(
                       icon: Icons.facebook,
                       label: "Facebook",
-                      onPressed: () => controller.website(),
+                      onPressed: isLogged,
                     ),
                     _DrawerButton(
                       icon: Icons.email,
@@ -68,7 +70,7 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
                     ),
                     _DrawerButton(
                       icon: Icons.login,
-                      label: "Ingresar",
+                      label: isLogged() != null ? "Login" : "Logout",
                       onPressed: () => controller.signIn(),
                     ),
                   ],
